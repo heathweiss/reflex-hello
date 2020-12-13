@@ -34,3 +34,9 @@ failed with: Error: While constructing the build plan, the following exceptions 
 found problem:
 hie-server will not run with lts 14.17.
 Need to go up to 15.2, but then build fails. Will need to upgrade the project to 15.2
+
+
+had to add to stack.yaml as build was failing due to missing glibc 2.29
+nix:
+  enable: true
+  packages: [glpk pcre zlib gmp glibc ]

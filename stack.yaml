@@ -18,8 +18,8 @@
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
 resolver:
-#  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/15/2.yaml
-  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/17.yaml
+ url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/15/2.yaml
+#  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/17.yaml
 #  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/25.yaml
 
 
@@ -49,21 +49,17 @@ extra-deps:
 - reflex-0.8.0.0
 - reflex-vty-0.1.4.1
 - ref-tf-0.4.0.2
-# try a diff version for lts 15.2
 - constraints-extras-0.3.0.2
-# - constraints-extras-0.3
 - patch-0.0.3.2
 - dependent-map-0.4.0.0
 - dependent-sum-0.7.1.0
-- some-1.0.1
+#- some-1.0.1
 - bimap-0.3.3
 - monoidal-containers-0.6.0.1
 - prim-uniq-0.2
 - witherable-0.3.1
-#additions for lts 15.2, but failed as can't change base, must use diff version of ghc
-#- base-4.13.0.0
-#- constraints-0.11.2
-#- template-haskell-2.15.0.0
+
+
 # Override default flag values for local packages and extra-deps
 # flags: {}
 
@@ -101,6 +97,6 @@ extra-deps:
 # added the following which is in investingRIO, where hie server works
 #it loads a different ghc versio: $ nix/store/hp0mcayb6xizig9dy9vpl3rcyfczf397-ghc-8.6.5
 #which then casues build failure: text-icu   > * Missing (or bad) C libraries: icuuc, icui18n, icudata
-#nix:
-#  enable: true
-#  packages: [glpk pcre zlib gmp ]
+nix:
+  enable: true
+  packages: [glpk pcre zlib gmp glibc icu ]
